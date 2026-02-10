@@ -1,0 +1,51 @@
+.env:12: command not found: AIzaSyAbdF2L4QJyedpOQHY6QmvMk0agcQ6jwHo
+2026/02/10 05:12:14 Connected to database successfully
+2026/02/10 05:12:14 Starting Clinical Agent Backend on :8080...
+2026/02/10 05:18:48 Client connected for audio ingestion
+2026/02/10 05:18:50 Received EOF from client, finishing audio stream
+2026/02/10 06:00:24 Client connected for audio ingestion
+2026/02/10 06:00:34 STT Stream ended: stream receive error: rpc error: code = OutOfRange desc = Audio Timeout Error: Long duration elapsed without audio. Audio should be sent close to real time.
+2026/02/10 06:13:13 Client connected for audio ingestion
+2026/02/10 06:13:24 STT Stream ended: stream receive error: rpc error: code = OutOfRange desc = Audio Timeout Error: Long duration elapsed without audio. Audio should be sent close to real time.
+2026/02/10 06:24:02 Client connected for audio ingestion
+2026/02/10 06:24:13 STT Stream ended: stream receive error: rpc error: code = OutOfRange desc = Audio Timeout Error: Long duration elapsed without audio. Audio should be sent close to real time.
+2026/02/10 06:28:05 Client connected for audio ingestion
+2026/02/10 06:28:15 STT Stream ended: stream receive error: rpc error: code = OutOfRange desc = Audio Timeout Error: Long duration elapsed without audio. Audio should be sent close to real time.
+2026/02/10 06:32:40 Client connected for audio ingestion
+2026/02/10 06:32:50 STT Stream ended: stream receive error: rpc error: code = OutOfRange desc = Audio Timeout Error: Long duration elapsed without audio. Audio should be sent close to real time.
+2026/02/10 06:40:33 Client connected for audio ingestion
+2026/02/10 06:40:44 STT Stream ended: stream receive error: rpc error: code = OutOfRange desc = Audio Timeout Error: Long duration elapsed without audio. Audio should be sent close to real time.
+2026/02/10 06:45:43 Client connected for audio ingestion
+2026/02/10 06:45:53 STT Stream ended: stream receive error: rpc error: code = OutOfRange desc = Audio Timeout Error: Long duration elapsed without audio. Audio should be sent close to real time.
+2026/02/10 06:49:08 Client connected for audio ingestion
+2026/02/10 06:49:18 STT Stream ended: stream receive error: rpc error: code = OutOfRange desc = Audio Timeout Error: Long duration elapsed without audio. Audio should be sent close to real time.
+2026/02/10 06:52:30 Client connected for audio ingestion
+2026/02/10 06:52:41 STT Stream ended: stream receive error: rpc error: code = OutOfRange desc = Audio Timeout Error: Long duration elapsed without audio. Audio should be sent close to real time.
+2026/02/10 06:54:27 Client connected for audio ingestion
+2026/02/10 06:54:37 STT Stream ended: stream receive error: rpc error: code = OutOfRange desc = Audio Timeout Error: Long duration elapsed without audio. Audio should be sent close to real time.
+2026/02/10 06:57:24 Client connected for audio ingestion
+2026/02/10 06:57:35 STT Stream ended: stream receive error: rpc error: code = OutOfRange desc = Audio Timeout Error: Long duration elapsed without audio. Audio should be sent close to real time.
+2026/02/10 07:07:15 Client connected for audio ingestion
+2026/02/10 07:07:25 STT Stream ended: stream receive error: rpc error: code = OutOfRange desc = Audio Timeout Error: Long duration elapsed without audio. Audio should be sent close to real time.
+2026/02/10 07:23:28 Client connected for audio ingestion
+2026/02/10 07:23:38 STT Stream ended: stream receive error: rpc error: code = OutOfRange desc = Audio Timeout Error: Long duration elapsed without audio. Audio should be sent close to real time.
+2026/02/10 09:24:51 Client connected for audio ingestion
+2026/02/10 09:25:01 STT Stream ended: stream receive error: rpc error: code = OutOfRange desc = Audio Timeout Error: Long duration elapsed without audio. Audio should be sent close to real time.
+2026/02/10 09:30:43 Client connected for audio ingestion
+2026/02/10 09:30:54 STT Stream ended: stream receive error: rpc error: code = OutOfRange desc = Audio Timeout Error: Long duration elapsed without audio. Audio should be sent close to real time.
+2026/02/10 09:37:01 Client connected for audio ingestion
+2026/02/10 09:37:12 STT Stream ended: stream receive error: rpc error: code = OutOfRange desc = Audio Timeout Error: Long duration elapsed without audio. Audio should be sent close to real time.
+2026/02/10 09:52:25 Client connected for audio ingestion
+2026/02/10 09:52:36 STT Stream ended: stream receive error: rpc error: code = OutOfRange desc = Audio Timeout Error: Long duration elapsed without audio. Audio should be sent close to real time.
+2026/02/10 10:02:41 Client connected for audio ingestion
+2026/02/10 10:02:52 STT Stream ended: stream receive error: rpc error: code = OutOfRange desc = Audio Timeout Error: Long duration elapsed without audio. Audio should be sent close to real time.
+2026/02/10 10:15:44 Client connected for audio ingestion
+2026/02/10 10:15:54 STT Stream ended: stream receive error: rpc error: code = OutOfRange desc = Audio Timeout Error: Long duration elapsed without audio. Audio should be sent close to real time.
+2026/02/10 10:21:23 Client connected for audio ingestion
+2026/02/10 10:21:29 Websocket read error: websocket: close 1006 (abnormal closure): unexpected EOF
+2026/02/10 10:21:34 Client connected for audio ingestion
+2026/02/10 10:21:45 STT Stream ended: stream receive error: rpc error: code = OutOfRange desc = Audio Timeout Error: Long duration elapsed without audio. Audio should be sent close to real time.
+2026/02/10 10:33:31 Client connected for audio ingestion
+2026/02/10 10:33:41 STT Stream ended: stream receive error: rpc error: code = OutOfRange desc = Audio Timeout Error: Long duration elapsed without audio. Audio should be sent close to real time.
+2026/02/10 10:37:01 Client connected for audio ingestion
+2026/02/10 10:37:11 STT Stream ended: stream receive error: rpc error: code = OutOfRange desc = Audio Timeout Error: Long duration elapsed without audio. Audio should be sent close to real time.

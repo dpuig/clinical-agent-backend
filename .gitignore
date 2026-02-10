@@ -1,0 +1,23 @@
+# Binaries
+/clinical-agent-backend
+/cmd/server/server
+/server
+
+# OS Specific
+.DS_Store
+Thumbs.db
+
+# IDEs
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# Secrets
+service-account-key.json
+*.pem
+.env
+
+# Go
+vendor/
+go.work

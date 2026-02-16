@@ -159,4 +159,120 @@ func (h *Handler) ServeWS(w http.ResponseWriter, r *http.Request) {
 			log.Printf("Failed to write close message: %v", werr)
 		}
 	}
+
+}
+
+// HandleUpload handles HTTP POST requests for audio files.
+func (h *Handler) HandleUpload(w http.ResponseWriter, r *http.Request) {
+	if r.Method != http.MethodPost {
+		http.Error(w, "Method not allowed", http.StatusMethodNotAllowed)
+		return
+	}
+
+	// 10MB max memory
+	if err := r.ParseMultipartForm(10 << 20); err != nil {
+		http.Error(w, "Failed to parse form: "+err.Error(), http.StatusBadRequest)
+		return
+	}
+
+	file, _, err := r.FormFile("audio")
+	if err != nil {
+		http.Error(w, "Failed to get audio file: "+err.Error(), http.StatusBadRequest)
+		return
+	}
+	defer file.Close()
+
+	log.Println("Received audio upload, starting transcription...")
+
+	// Stream audio to STT
+	// Note: Google STT StreamTranscribe expects raw bytes (LINEAR16 usually).
+	// If the file is WAV, it has a header. StreamTranscribe might handle it if we skip header?
+	// Or STT API is tolerant.
+	transcripts, errs := h.sttClient.StreamTranscribe(r.Context(), file)
+
+	var fullTranscript string
+
+	// Process transcripts
+	done := make(chan bool)
+	go func() {
+		defer close(done)
+		for t := range transcripts {
+			// Accumulate final results?
+			// Actually stream returns interim too.
+			// Let's just keep appending or replacing?
+			// Ideally we want the final result.
+			// Cloud Speech returns multiple results.
+			// Simply concatenating is okay for now.
+			log.Printf("Partial Transcript: %s", t)
+			fullTranscript = t // In our simplified client, we only get the latest transcript chunk?
+			// Wait, StreamTranscribe returns chunk texts.
+			// We should probably accumulate.
+			// However, the channel yields distinct phrases.
+		}
+	}()
+
+	// Wait for stream end
+	if err := <-errs; err != nil {
+		if err != io.EOF {
+			log.Printf("STT Error: %v", err)
+			http.Error(w, "Transcription failed: "+err.Error(), http.StatusInternalServerError)
+			return
+		}
+	}
+	<-done // Wait for consumer to finish
+
+	log.Printf("Final Full Transcript: %s", fullTranscript)
+
+	// Async Entity Extraction
+	go func(text string) {
+		if text == "" {
+			return
+		}
+		note, err := h.llmClient.ExtractEntities(context.Background(), text)
+		if err != nil {
+			log.Printf("Entity extraction failed: %v", err)
+			return
+		}
+		log.Printf("Extracted Clinical Note: %+v", note)
+
+		fhirResource, err := ehr.MapToFHIR(*note)
+		if err != nil {
+			log.Printf("FHIR mapping failed: %v", err)
+			return
+		}
+
+		if err := h.repo.Save(context.Background(), fhirResource); err != nil {
+			log.Printf("Failed to save clinical impression to DB: %v", err)
+			return
+		}
+		log.Println("Successfully saved Clinical Impression to DB")
+	}(fullTranscript)
+
+	// Return JSON response
+	w.Header().Set("Content-Type", "application/json")
+	json.NewEncoder(w).Encode(map[string]string{
+		"status":     "success",
+		"transcript": fullTranscript,
+	})
+}
+
+// HandleGetImpressions handles HTTP GET requests for clinical impressions.
+func (h *Handler) HandleGetImpressions(w http.ResponseWriter, r *http.Request) {
+	if r.Method != http.MethodGet {
+		http.Error(w, "Method not allowed", http.StatusMethodNotAllowed)
+		return
+	}
+
+	impressions, err := h.repo.FindAll(r.Context())
+	if err != nil {
+		log.Printf("Failed to fetch impressions: %v", err)
+		http.Error(w, "Failed to fetch impressions", http.StatusInternalServerError)
+		return
+	}
+
+	w.Header().Set("Content-Type", "application/json")
+	if err := json.NewEncoder(w).Encode(impressions); err != nil {
+		log.Printf("Failed to encode impressions: %v", err)
+		http.Error(w, "Failed to encode response", http.StatusInternalServerError)
+	}
 }

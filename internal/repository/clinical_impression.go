@@ -59,3 +59,36 @@ func (r *ClinicalImpressionRepository) Save(ctx context.Context, impression *fhi
 
 	return nil
 }
+
+// FindAll retrieves all clinical impressions, ordered by ID descending.
+func (r *ClinicalImpressionRepository) FindAll(ctx context.Context) ([]*fhir.ClinicalImpression, error) {
+	query := `
+		SELECT raw_fhir FROM clinical_impressions
+		ORDER BY id DESC
+	`
+	rows, err := r.db.Query(ctx, query)
+	if err != nil {
+		return nil, fmt.Errorf("failed to query clinical impressions: %w", err)
+	}
+	defer rows.Close()
+
+	var impressions []*fhir.ClinicalImpression
+	for rows.Next() {
+		var rawFHIR []byte
+		if err := rows.Scan(&rawFHIR); err != nil {
+			return nil, fmt.Errorf("failed to scan raw FHIR: %w", err)
+		}
+
+		var impression fhir.ClinicalImpression
+		if err := json.Unmarshal(rawFHIR, &impression); err != nil {
+			return nil, fmt.Errorf("failed to unmarshal FHIR: %w", err)
+		}
+		impressions = append(impressions, &impression)
+	}
+
+	if rows.Err() != nil {
+		return nil, fmt.Errorf("rows iteration error: %w", rows.Err())
+	}
+
+	return impressions, nil
+}

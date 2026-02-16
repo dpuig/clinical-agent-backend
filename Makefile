@@ -22,3 +22,13 @@ test: ## Run tests inside the container
 
 clean: ## Remove Docker containers and images
 	docker compose down --rmi all --volumes
+
+# Mobile Development
+run-ios: ## Run the Expo app on iOS Simulator
+	cd expo && npm run ios
+
+run-android: ## Run the Expo app on Android Emulator
+	cd expo && npm run android
+
+run-web: ## Run the Expo app on Web
+	cd expo && npm run web

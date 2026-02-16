@@ -9,6 +9,7 @@ services:
       - .env
     environment:
       - GOOGLE_APPLICATION_CREDENTIALS=/app/service-account-key.json
+      - DB_HOST=db
 
   db:
     image: postgres:15-alpine

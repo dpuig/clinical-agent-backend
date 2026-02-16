@@ -1,0 +1,14 @@
+.git
+.gitignore
+.env
+.vscode
+node_modules
+expo/node_modules
+server
+server.log
+docker-compose.yml
+README.md
+docs
+docs/**
+Makefile
+service-account-key.json

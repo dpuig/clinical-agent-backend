@@ -12,13 +12,19 @@ A comprehensive clinical AI agent platform featuring a robust Go backend and a m
 - **Containerization**: Docker & Docker Compose
 
 ### Frontend (Expo)
-- **Framework**: Expo Router (Stack Navigation)
-- **UI/UX**: Custom "Magic Marble" Orb shader (Skia), Dark Mode support, Glassmorphism.
-- **State Management**: React Context (`ctx.tsx`)
-- **Key Features**:
-  - Real-time Audio Visualization (Orb).
-  - "Magic Spell" Shader with Caustics and Smoke.
-  - Seamless "Listening" state transition.
+- **Framework**: React Native with Expo Router (File-based routing)
+- **Design System**: "Bio-Digital Slate" based on Material 3 Expressive.
+- **Styling**: Custom Theme Context (`ctx.tsx`) with Dark/Light mode support.
+- **Graphics**: `@shopify/react-native-skia` for high-performance 2D graphics (Waveforms).
+- **Animations**: `react-native-reanimated` for fluid layout transitions and morphing effects.
+- **Authentication**: Enterprise SSO Simulation via `AuthContext`.
+
+### Key Features
+- **Clinical Dashboard**: Responsive layout adapting to Smartphones (Vertical Stack) and Tablets (Split View).
+- **Real-time Audio Visualizer**: Skia-based waveform that reacts to "Listening" state.
+- **Morphing FAB**: Ambient Action Button that transitions between shapes (Pill/Circle) based on state.
+- **Enterprise SSO**: Simulated secure login flow with route protection.
+- **Adaptive Theming**: Manual toggle (Light/Dark/System) with a specialized Teal-based dark palette.
 
 ## Getting Started
 
@@ -67,10 +73,16 @@ A comprehensive clinical AI agent platform featuring a robust Go backend and a m
 
 ## UI/UX Features (Frontend)
 
-The frontend features a highly polished **"Magic Orb"** interface:
-- **Idle State**: A perfect glass marble with slow, organic internal movement.
-- **Listening State**: Expands into a fluid, energetic shape with "smoke" and "caustic" effects.
-- **Dark Mode**: Fully supported with Deep Space gradients and adaptive UI elements.
+The frontend implements a **"Bio-Digital Slate"** aesthetic, merging clinical precision with organic fluidity:
+
+- **Expressive Motion**: Layouts transition smoothly using `LinearTransition`. Elements enter/exit with fluid fades and springs.
+- **Visual Feedback**:
+  - **Idle**: Clean, minimalist dashboard focused on the patient context.
+  - **Listening**: The interface transforms detailed views into a focused waveform visualization.
+  - **Processing**: Visual indicators (Hourglass/Pulse) reassure the user of active computation.
+- **Enterprise Ready**:
+  - **Login**: Dedicated SSO screen with enterprise branding.
+  - **Profile**: Modal-based settings for theme management and session control.
 
 ## Project Structure
 

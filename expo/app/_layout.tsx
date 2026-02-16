@@ -5,6 +5,7 @@ import { useEffect } from 'react';
 
 import { Colors } from '../constants/Colors';
 import { ThemeProvider, useTheme } from './ctx';
+import { AuthProvider } from './auth';
 import { ThemeProvider as NavThemeProvider, DefaultTheme, DarkTheme } from '@react-navigation/native';
 
 export {
@@ -44,7 +45,9 @@ export default function RootLayout() {
 
   return (
     <ThemeProvider>
-      <RootLayoutNav />
+      <AuthProvider>
+        <RootLayoutNav />
+      </AuthProvider>
     </ThemeProvider>
   );
 }

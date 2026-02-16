@@ -29,3 +29,6 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
 }
 
 export const useTheme = () => React.useContext(ThemeContext);
+
+// Required by Expo Router to identify this as a valid route file (even though it's a context)
+export default function () { return null; }

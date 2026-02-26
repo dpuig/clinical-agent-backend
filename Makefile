@@ -25,7 +25,7 @@ clean: ## Remove Docker containers and images
 
 # Mobile Development
 run-ios: ## Run the Expo app on iOS Simulator
-	cd expo && npm run ios
+	cd expo && REACT_NATIVE_PACKAGER_HOSTNAME=127.0.0.1 npx expo start --ios
 
 run-android: ## Run the Expo app on Android Emulator
 	cd expo && npm run android
